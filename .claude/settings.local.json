@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:developers.home-assistant.io)",
+      "WebSearch",
+      "Bash(git:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(docker run:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}

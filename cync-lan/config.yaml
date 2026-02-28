@@ -1,0 +1,60 @@
+name: Cync LAN
+description: Local-network control for Cync/GE smart lighting — no cloud required.
+version: "1.0.0"
+slug: cync-lan
+url: https://github.com/baudneo/cync-lan
+
+# Architecture — matches baudneo/cync-lan:latest published platforms
+arch:
+  - amd64
+  - aarch64
+
+# Lifecycle
+init: false
+startup: services
+boot: auto
+
+# Ingress — FastAPI export server on port 23778
+ingress: true
+ingress_port: 23778
+ingress_entry: setup
+panel_icon: mdi:lightbulb-group
+panel_title: Cync LAN
+webui: http://[HOST]:[PORT:23778]/docs
+
+# Device connection port — Cync devices must be DNS-redirected here
+ports:
+  23779/tcp: 23779
+  23778/tcp: 23778
+ports_description:
+  23779/tcp: Cync device TLS connection port (xlink.cn redirect target)
+  23778/tcp: FastAPI device export server (Web UI / OTP setup)
+
+# Add-on options
+options:
+  mqtt_host: homeassistant.local
+  mqtt_port: 1883
+  mqtt_user: ""
+  mqtt_pass: ""
+  mqtt_topic: cync_lan
+  hass_topic: homeassistant
+  mqtt_conn_delay: 10
+  cmd_broadcasts: 2
+  max_tcp_conn: 8
+  tcp_whitelist: ""
+  debug: false
+  raw_debug: false
+
+schema:
+  mqtt_host: str
+  mqtt_port: port
+  mqtt_user: str?
+  mqtt_pass: password?
+  mqtt_topic: str
+  hass_topic: str
+  mqtt_conn_delay: "int(1,)"
+  cmd_broadcasts: "int(1,)"
+  max_tcp_conn: "int(1,)"
+  tcp_whitelist: str?
+  debug: bool
+  raw_debug: bool

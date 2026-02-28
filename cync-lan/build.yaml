@@ -1,0 +1,3 @@
+build_from:
+  amd64: baudneo/cync-lan:latest
+  aarch64: baudneo/cync-lan:latest

@@ -1,0 +1,41 @@
+configuration:
+  mqtt_host:
+    name: MQTT Broker Host
+    description: Hostname or IP address of your MQTT broker.
+  mqtt_port:
+    name: MQTT Broker Port
+    description: TCP port of your MQTT broker (default 1883).
+  mqtt_user:
+    name: MQTT Username
+    description: Username for MQTT authentication. Leave blank for anonymous access.
+  mqtt_pass:
+    name: MQTT Password
+    description: Password for MQTT authentication. Leave blank for anonymous access.
+  mqtt_topic:
+    name: MQTT Root Topic
+    description: Root topic prefix used for all Cync device messages (e.g. cync_lan).
+  hass_topic:
+    name: Home Assistant Discovery Topic
+    description: Topic prefix used for Home Assistant MQTT auto-discovery (e.g. homeassistant).
+  mqtt_conn_delay:
+    name: MQTT Reconnect Delay (seconds)
+    description: How long (in seconds) to wait before retrying a lost MQTT connection.
+  cmd_broadcasts:
+    name: Wi-Fi Command Broadcast Count
+    description: Number of times each command is broadcast over Wi-Fi to Cync devices.
+  max_tcp_conn:
+    name: Max Device TCP Connections
+    description: Maximum number of simultaneous TCP connections accepted from Cync devices.
+  tcp_whitelist:
+    name: Device IP Allowlist
+    description: Comma-separated list of device IP addresses to allow. Leave blank to allow all.
+  debug:
+    name: Debug Logging
+    description: Enable verbose debug logging from cync-lan.
+  raw_debug:
+    name: Raw Packet Logging
+    description: Enable raw packet/byte-level logging. Very verbose — use only for deep troubleshooting.
+
+network:
+  23779/tcp: Cync device TLS connection port (xlink.cn DNS redirect target)
+  23778/tcp: FastAPI device export server — used for Web UI and OTP device export
